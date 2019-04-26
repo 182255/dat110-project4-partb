@@ -41,11 +41,15 @@ public class AccessLog {
 	
 	// TODO: JSON representation of the access log
 	public String toJson() {
-		AccessEntry ae = log.get(cid.intValue());
-    	
-		String json = "\"id\": " + ae.getId() + "\n" + "message:" 
-		+ ae.getMessage();
-    	
+		String json = null;
+		Gson gson = new Gson();
+		for(Integer i : log.keySet()) {
+			String id = i.toString();
+			String value = log.get(i).toString();
+			json = "id: " + id + ", " + "message: " + value;
+			
+			return json;
+		}
     	return json;
     }
 }
